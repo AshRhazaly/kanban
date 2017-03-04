@@ -9,5 +9,12 @@ class PostFlowTest < ActionDispatch::IntegrationTest
   test "create a post" do
     get "/posts/new"
     assert_response :success
+
+    post "/posts",
+      params: {post: {title: "Post title", content: "Post content"}}
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+    assert_select "h2", "Post title"
   end
 end

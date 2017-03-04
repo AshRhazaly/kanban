@@ -6,11 +6,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should get create" do
-  #   get posts_create_url
-  #   assert_response :success
-  # end
-  #
+  test "should get create" do
+    get "/posts/create"
+    assert_response :success
+  end
+
   test "should get new" do
     get "/posts/new"
     assert_response :success

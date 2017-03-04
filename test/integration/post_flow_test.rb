@@ -5,4 +5,9 @@ class PostFlowTest < ActionDispatch::IntegrationTest
     get "/"
     assert_select "h1", "Posts#index"
   end
+
+  test "create a post" do
+    get "/posts/new"
+    assert_response :success
+  end
 end

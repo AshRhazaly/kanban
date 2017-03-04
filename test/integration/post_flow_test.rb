@@ -20,6 +20,6 @@ class PostFlowTest < ActionDispatch::IntegrationTest
 
   test "form found when creating a post" do
     get "/posts/new"
-    assert_template :partial  => true
+    assert_template partial: '_form', locals: { post: @post }
   end
 end

@@ -16,10 +16,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   #
-  # test "should get edit" do
-  #   get posts_edit_url
-  #   assert_response :success
-  # end
+  test "should get edit" do
+    get "/posts/edit"
+    assert_response :success
+  end
   #
   # test "should get destroy" do
   #   get posts_destroy_url

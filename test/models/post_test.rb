@@ -13,4 +13,7 @@ class PostTest < ActiveSupport::TestCase
     assert_equal false, posts(:one).valid?
   end
 
+  test "post content should be a string" do
+    assert_equal true, posts(:one).title.is_a?(String)
+  end
 end

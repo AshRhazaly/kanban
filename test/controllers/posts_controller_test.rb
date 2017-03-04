@@ -11,10 +11,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   #   assert_response :success
   # end
   #
-  # test "should get new" do
-  #   get posts_new_url
-  #   assert_response :success
-  # end
+  test "should get new" do
+    get "/posts/new"
+    assert_response :success
+  end
   #
   # test "should get edit" do
   #   get posts_edit_url

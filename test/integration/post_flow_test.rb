@@ -18,8 +18,8 @@ class PostFlowTest < ActionDispatch::IntegrationTest
     assert_select "h2", "Post title"
   end
 
-  test "form found when creating a post" do 
+  test "form found when creating a post" do
     get "/posts/new"
-    assert_select "form"
+    assert_template :partial  => true
   end
 end

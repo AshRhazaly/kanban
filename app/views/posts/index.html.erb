@@ -1,8 +1,9 @@
-<h1>Posts#index</h1>
-
-<% @post.each do |post| %>
-
-<h2><%= post.title %> </h2>
-
-
-<% end %>
+<main class="container main-container">
+  <section class="container post-container">
+  <% @post.each do |post| %>
+  <section class="col-xs-4 title-block">
+  <h2><%= post.title %> </h2>
+</section>
+  <% end %>
+  </section>
+</main>

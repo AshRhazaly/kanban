@@ -14,4 +14,10 @@ class PostTest < ActiveSupport::TestCase
   test "post content should be a string" do
     assert_equal true, posts(:one).content.is_a?(String)
   end
+
+  test "should destroy post" do
+  assert_difference('Post.count', -1) do
+    delete :destroy, id: @post
+  end
+
 end

@@ -8,9 +8,14 @@
             <section class="container well title-block">
                 <h2><%= post.title %>
                 </h2>
-                <br/>
-                <br/>
-                <br/>
+                <%= link_to edit_post_path(post) do %>
+                  <span class="glyphicon glyphicon-pencil edit-post"></span>
+                <% end %>
+
+                <%= link_to post_path(post), method: :delete do %>
+                  <span class="glyphicon glyphicon-trash delete-post"></span>
+                <% end %>
+
             </section>
           <% end %>
         <% end %>

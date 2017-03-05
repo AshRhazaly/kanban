@@ -1,26 +1,20 @@
 <main class="container">
-  <%= link_to "Go back", posts_path, class: "btn btn-primary" %>
-  <header class="container">
-    <h1><%= @post.title %></h1>
-  </header>
-  <section class="col-xs-4 to-do">
-  <h2>To do</h2>
-    <section class="container task-to-do">
+    <%= link_to "Go back", posts_path, class: "btn btn-primary" %>
+    <header class="container">
+        <h1 class="show-page-header"><%= @post.title %></h1>
+    </header>
+    <section class="col-xs-4 to-do">
+        <h2>To do</h2>
+        <input class="to-do-input" placeholder="Add a new task here">
 
+        </input>
     </section>
-  </section>
 
-  <section class="col-xs-4 doing">
-    <h2>Doing</h2>
-    <section class="container task-doing">
-
+    <section class="col-xs-4 doing">
+        <h2>Doing</h2>
     </section>
-  </section>
 
-  <section class="col-xs-4 done">
-    <h2>Done</h2>
-    <section class="container task-done">
-
+    <section class="col-xs-4 done">
+        <h2>Done</h2>
     </section>
-  </section>
 </main>

@@ -27,10 +27,16 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_path
-    flash[:notice] = "You've deleted your Kanban"
+    flash[:notice] = "You've deleted your Kanban man."
   end
 
   def update
+    if @post.update(post_params)
+     redirect_to posts_path
+     flash[:notice] = "You've updated your Kanban bro."
+   else
+     render 'new'
+   end
   end
 
   private

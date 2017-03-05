@@ -1,6 +1,14 @@
-<%= form_for @post do |f| %>
-  <%= f.label :title %>
+<main class="container">
+<%= bootstrap_form_for @post do |f| %>
+  <section class="container">
   <%= f.text_field :title %>
-  
+
   <%= f.submit %>
+  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <%= link_to posts_path do%>
+    <button class="btn btn-primary"> Go Back</button>
+  <% end %>
+</section>
 <% end %>
+
+</main>

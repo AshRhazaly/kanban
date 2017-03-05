@@ -20,15 +20,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get "/posts/edit"
     assert_response :success
   end
-  #
-  # test "should get destroy" do
-  #   get posts_destroy_url
-  #   assert_response :success
-  # end
-  #
-  # test "should get update" do
-  #   get posts_update_url
-  #   assert_response :success
-  # end
+
+  test "should destroy post" do
+    assert_difference('Post.count', -1) do
+      delete :destroy, id: @post
+    end
+  end
 
 end

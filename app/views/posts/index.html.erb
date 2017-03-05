@@ -1,9 +1,18 @@
 <main class="container main-container">
-  <section class="container post-container">
-  <% @post.each do |post| %>
-  <section class="col-xs-4 title-block">
-  <h2><%= post.title %> </h2>
-</section>
-  <% end %>
-  </section>
+    <section class="container post-container">
+      <%= link_to 'New KanBan', new_post_path, class: "btn btn-primary" %>
+        <h1 class="page-header">
+            Kan your Bans</h1>
+        <% @post.each do |post| %>
+          <%=link_to post_path(post), class: 'show-link' do %>
+            <section class="container well title-block">
+                <h2><%= post.title %>
+                </h2>
+                <br/>
+                <br/>
+                <br/>
+            </section>
+          <% end %>
+        <% end %>
+    </section>
 </main>

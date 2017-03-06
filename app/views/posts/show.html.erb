@@ -1,3 +1,4 @@
+
 <main class="container">
     <%= link_to "Go back", posts_path, class: "btn btn-primary" %>
     <header class="container">
@@ -7,8 +8,9 @@
     <section class="col-xs-4 to-do">
         <h2>To do</h2>
         <input class="form-control to-do-input" placeholder="What haven't you done?">
-
+          <element id="some_id" data-post_id="<%= @post.id %>"></element>
         </input>
+        <br />
     </section>
 
     <section class="col-xs-4 doing">

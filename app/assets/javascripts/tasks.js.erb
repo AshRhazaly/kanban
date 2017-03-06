@@ -1,0 +1,65 @@
+
+
+$(document).ready(function(){
+  postTask();
+  populateTask();
+});
+
+function populateTask () {
+  var id = $('#some_id').data('post_id');
+  $.ajax({
+    url: '/posts/' + id + "/tasks",
+    success: function(data) {
+      $.each(data, function(key, value){
+        var displayTask = "";
+        displayTask += '<section ' +"id=" + key + '>' + value + '</section>';
+        $(".to-do").append(displayTask);
+      });
+    }
+  });
+}
+
+function postTask () {
+  $(".to-do-input").keypress(function(e){
+    if(e.which == 13) {
+      var id = $('#some_id').data('post_id');
+      myData = {
+      content: $(".to-do-input").val()
+     }
+     $.post(
+        "/posts/" + id + "/tasks",
+        {task: myData}
+     )
+     $(".to-do-input").val('');
+    }
+  });
+
+  $(".doing-input").keypress(function(e){
+    if(e.which == 13) {
+      var id = $('#some_id').data('post_id');
+      myData = {
+      content: $(".to-do-input").val()
+     }
+     $.post(
+        "/posts/" + id + "/tasks",
+        {task: myData}
+     )
+     $(".to-do-input").val('');
+    }
+  });
+
+  $(".done-input").keypress(function(e){
+    if(e.which == 13) {
+      var id = $('#some_id').data('post_id');
+      myData = {
+      content: $(".to-do-input").val()
+     }
+     $.post(
+        "/posts/" + id + "/tasks",
+        {task: myData}
+     )
+     $(".to-do-input").val('');
+    }
+  });
+
+}

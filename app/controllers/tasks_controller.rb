@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
-  before_action :set_tasks, only: [:create,:show,:edit,:update,:destroy]
+  before_action :set_tasks, only: [:index,:create,:show,:edit,:update,:destroy]
 
   def index
+    @tasks = @post.tasks.all
+    respond_to do |format|
+      format.json {render :json => @tasks.to_json}
+    end
   end
 
   def new

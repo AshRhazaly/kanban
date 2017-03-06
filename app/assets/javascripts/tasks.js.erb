@@ -1,10 +1,4 @@
 
-
-$(document).ready(function(){
-  postTask();
-  populateTask();
-});
-
 function populateTask () {
   var id = $('#some_id').data('post_id');
   $.ajax({
@@ -12,7 +6,7 @@ function populateTask () {
     success: function(data) {
       $.each(data, function(key, value){
         var displayTask = "";
-        displayTask += '<section ' +"id=" + key + '>' + value + '</section>';
+        displayTask += '<section ' +"id=" + value + '>' + value.content + '</section>';
         $(".to-do").append(displayTask);
       });
     }
@@ -20,7 +14,7 @@ function populateTask () {
 }
 
 function postTask () {
-  $(".to-do-input").keypress(function(e){
+  $(".to-do-input").keyup(function(e){
     if(e.which == 13) {
       var id = $('#some_id').data('post_id');
       myData = {
@@ -30,6 +24,9 @@ function postTask () {
         "/posts/" + id + "/tasks",
         {task: myData}
      )
+     .done(function (){
+       populateTask();
+     })
      $(".to-do-input").val('');
     }
   });
@@ -63,3 +60,9 @@ function postTask () {
   });
 
 }
+
+
+$(document).ready(function(){
+  postTask();
+  populateTask();
+});

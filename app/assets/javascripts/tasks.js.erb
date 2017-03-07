@@ -18,52 +18,63 @@ function populateTask () {
 function bindPostTask () {
   $(".to-do-input").keyup(function(e){
     // on enter post input value to database
+    var message = $(".to-do-input").val();
     if(e.which == 13) {
       var id = $('#some_id').data('post_id');
       myData = {
       content: $(".to-do-input").val()
      }
-     console.log("Invoking Populate Tasks")
      $.ajax({
        type: "POST",
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       populateTask()
-      // You append the response into the html
+       $(".append-section-to-do").append(`<section class=task>${message} </section>`)
     })
      // clears input field after enter
      $(".to-do-input").val('');
     }
   });
 
-  // $(".doing-input").keypress(function(e){
-  //   if(e.which == 13) {
-  //     var id = $('#some_id').data('post_id');
-  //     myData = {
-  //     content: $(".to-do-input").val()
-  //    }
-  //    $.post(
-  //       "/posts/" + id + "/tasks",
-  //       {task: myData}
-  //    )
-  //    $(".to-do-input").val('');
-  //   }
-  // });
-  //
-  // $(".done-input").keypress(function(e){
-  //   if(e.which == 13) {
-  //     var id = $('#some_id').data('post_id');
-  //     myData = {
-  //     content: $(".to-do-input").val()
-  //    }
-  //    $.post(
-  //       "/posts/" + id + "/tasks",
-  //       {task: myData}
-  //    )
-  //    $(".to-do-input").val('');
-  //   }
-  // });
+  $(".doing-input").keyup(function(e){
+    // on enter post input value to database
+    var message = $(".doing-input").val();
+    if(e.which == 13) {
+      var id = $('#some_id').data('post_id');
+      myData = {
+      content: $(".doing-input").val()
+     }
+     $.ajax({
+       type: "POST",
+       url: "/posts/" + id + "/tasks.json",
+       data: {task: myData}
+     }).done(function(response){
+       $(".append-section-doing").append(`<section class=task>${message} </section>`)
+    })
+     // clears input field after enter
+     $(".doing-input").val('');
+    }
+  });
+
+  $(".done-input").keyup(function(e){
+    // on enter post input value to database
+    var message = $(".done-input").val();
+    if(e.which == 13) {
+      var id = $('#some_id').data('post_id');
+      myData = {
+      content: $(".done-input").val()
+     }
+     $.ajax({
+       type: "POST",
+       url: "/posts/" + id + "/tasks.json",
+       data: {task: myData}
+     }).done(function(response){
+       $(".append-section-done").append(`<section class=task>${message} </section>`)
+    })
+     // clears input field after enter
+     $(".done-input").val('');
+    }
+  });
 
 }
 

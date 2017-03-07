@@ -8,7 +8,7 @@ function populateTask () {
     success: function(data) {
       $(".to-do").find("section").html()
       $.each(data, function(key, value){
-        displayTask += '<section class=task draggable="true" ondragstart="drag(event)" >' + value.content + '</section>';
+        displayTask += '<section class="ui-state-default">' + value.content + '</section>';
       });
       $(".append-section-to-do").append(displayTask);
     }
@@ -29,7 +29,7 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-to-do").append(`<section class=task draggable="true" ondragstart="drag(event)">${message} </section>`)
+       $(".append-section-to-do").append(`<section class="ui-state-default">${message} </section>`)
     })
      // clears input field after enter
      $(".to-do-input").val('');
@@ -49,7 +49,7 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-doing").append(`<section class=task draggable="true" ondragstart="drag(event)">${message} </section>`)
+       $(".append-section-doing").append(`<section class="ui-state-default">${message} </section>`)
     })
      // clears input field after enter
      $(".doing-input").val('');
@@ -69,7 +69,7 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-done").append(`<section class=task draggable="true" ondragstart="drag(event)">${message} </section>`)
+       $(".append-section-done").append(`<section class="ui-state-default">${message} </section>`)
     })
      // clears input field after enter
      $(".done-input").val('');
@@ -77,20 +77,11 @@ function bindPostTask () {
   });
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
+$( function() {
+  $( "#sortable1, #sortable2, #sortable3" ).sortable({
+    connectWith: ".connectedSortable"
+  }).disableSelection();
+} );
 
 $(document).on('turbolinks:load', function(){
   bindPostTask();

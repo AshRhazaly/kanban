@@ -37,6 +37,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = @post.tasks.find(params[:id])
+    @task.destroy
+    respond_to do |format|
+      format.html { redirect_to @post, notice: "Task was deleted."}
+      format.json {head :no_content}
+      format.js {}
+    end
   end
 
   private

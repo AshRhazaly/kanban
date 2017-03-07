@@ -11,7 +11,7 @@
           <element id="some_id" data-post_id="<%= @post.id %>"></element>
         </input>
         <br />
-        <section class="append-section-to-do">
+        <section class="append-section-to-do" ondrop="drop(event)" ondragover="allowDrop(event)">
 
         </section>
     </section>
@@ -22,7 +22,7 @@
 
         </input>
         <br />
-        <section class="append-section-doing">
+        <section class="append-section-doing" ondrop="drop(event)" ondragover="allowDrop(event)">
 
         </section>
     </section>
@@ -33,7 +33,6 @@
 
         </input>
         <br />
-        <section class="append-section-done">
 
         </section>
     </section>

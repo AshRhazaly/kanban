@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#jquery ui
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+
 gem 'rails-controller-testing'
 #react rails
 gem 'react-rails', '~> 1.7', '>= 1.7.1'

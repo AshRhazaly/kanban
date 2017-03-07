@@ -1,6 +1,6 @@
 
 function populateTask () {
-  $(".append-section").html("");
+  $(".append-section-to-do").html("");
   var id = $('#some_id').data('post_id');
   var displayTask = "";
   $.ajax({
@@ -8,9 +8,9 @@ function populateTask () {
     success: function(data) {
       $(".to-do").find("section").html()
       $.each(data, function(key, value){
-        displayTask += '<section class=task >' + value.content + '</section>';
+        displayTask += '<section class=task draggable="true" ondragstart="drag(event)" >' + value.content + '</section>';
       });
-      $(".append-section").append(displayTask);
+      $(".append-section-to-do").append(displayTask);
     }
   });
 }
@@ -29,7 +29,7 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-to-do").append(`<section class=task>${message} </section>`)
+       $(".append-section-to-do").append(`<section class=task draggable="true" ondragstart="drag(event)">${message} </section>`)
     })
      // clears input field after enter
      $(".to-do-input").val('');
@@ -49,7 +49,7 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-doing").append(`<section class=task>${message} </section>`)
+       $(".append-section-doing").append(`<section class=task draggable="true" ondragstart="drag(event)">${message} </section>`)
     })
      // clears input field after enter
      $(".doing-input").val('');
@@ -69,17 +69,30 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-done").append(`<section class=task>${message} </section>`)
+       $(".append-section-done").append(`<section class=task draggable="true" ondragstart="drag(event)">${message} </section>`)
     })
      // clears input field after enter
      $(".done-input").val('');
     }
   });
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
 
 }
 
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   bindPostTask();
   populateTask();
 });

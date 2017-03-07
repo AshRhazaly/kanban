@@ -13467,3 +13467,392 @@ Processing by TasksController#destroy as JSON
 Completed 204 No Content in 9ms (ActiveRecord: 3.3ms)
 
 
+Started GET "/posts/6" for ::1 at 2017-03-07 23:27:39 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 436ms (Views: 432.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:27:40 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:27:48 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 281ms (Views: 276.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:27:48 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/posts/6/tasks/186%22.json" for ::1 at 2017-03-07 23:27:54 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"186\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 186], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 186]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.4ms)
+
+
+Started DELETE "/posts/6/tasks/187%22.json" for ::1 at 2017-03-07 23:27:55 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"187\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 187], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 187]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.3ms)
+
+
+Started DELETE "/posts/6/tasks/188%22.json" for ::1 at 2017-03-07 23:27:56 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"188\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 188], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 188]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.2ms)
+
+
+Started DELETE "/posts/6/tasks/189%22.json" for ::1 at 2017-03-07 23:27:56 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"189\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 189], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 189]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.2ms)
+
+
+Started DELETE "/posts/6/tasks/190%22.json" for ::1 at 2017-03-07 23:27:56 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"190\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 190], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 190]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.1ms)
+
+
+Started DELETE "/posts/6/tasks/191%22.json" for ::1 at 2017-03-07 23:27:56 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"191\""}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 191], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 191]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.4ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-07 23:28:01 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Hello"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-07 15:28:01 UTC], ["updated_at", 2017-03-07 15:28:01 UTC], ["content", "Hello"], ["post_id", 6]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:28:03 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 279ms (Views: 276.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:28:04 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for ::1 at 2017-03-07 23:29:03 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 485ms (Views: 480.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:29:04 +0800
+Processing by TasksController#index as JSON
+Started GET "/posts" for ::1 at 2017-03-07 23:29:04 +0800
+  Parameters: {"post_id"=>"6"}
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 330ms (Views: 325.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-07 23:29:06 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:51:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.0ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.3ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (124.0ms)
+Started GET "/posts/6" for ::1 at 2017-03-07 23:29:08 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 308ms (Views: 304.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:29:08 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/posts/6/tasks/192%22.json" for ::1 at 2017-03-07 23:29:30 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"192\""}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 192], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 192]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 11ms (ActiveRecord: 4.0ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-07 23:29:34 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"I know"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-07 15:29:34 UTC], ["updated_at", 2017-03-07 15:29:34 UTC], ["content", "I know"], ["post_id", 6]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 8ms (Views: 0.6ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-07 23:29:36 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"What"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-07 15:29:36 UTC], ["updated_at", 2017-03-07 15:29:36 UTC], ["content", "What"], ["post_id", 6]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-07 23:29:38 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Testing"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-07 15:29:38 UTC], ["updated_at", 2017-03-07 15:29:38 UTC], ["content", "Testing"], ["post_id", 6]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 7ms (Views: 0.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:29:38 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 248ms (Views: 245.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:29:39 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/posts/6/tasks/193%22.json" for ::1 at 2017-03-07 23:29:46 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"193\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 193], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 193]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 4.4ms)
+
+
+Started DELETE "/posts/6/tasks/194%22.json" for ::1 at 2017-03-07 23:29:46 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"194\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 194], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 194]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:30:22 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 465ms (Views: 462.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:30:23 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:32:22 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 466ms (Views: 463.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:32:23 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:33:05 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 269ms (Views: 264.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:33:06 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:33:10 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 486ms (Views: 483.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:33:22 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 446ms (Views: 443.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:33:23 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:33:55 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2620ms (Views: 2617.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:33:58 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-07 23:34:12 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2565ms (Views: 2562.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-07 23:34:15 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 48ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/posts/6/tasks/195%22.json" for ::1 at 2017-03-07 23:34:37 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"195\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 195], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 195]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.4ms)
+
+

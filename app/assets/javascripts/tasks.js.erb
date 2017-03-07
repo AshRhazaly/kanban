@@ -8,7 +8,7 @@ function populateTask () {
     success: function(data) {
       $(".to-do").find("section").html()
       $.each(data, function(key, value){
-        displayTask += '<section class="ui-state-default">' + value.content + '</section>';
+        displayTask += '<section ' + "id=" + value.id + '" class="ui-state-default" >' + value.content + "<span class='glyphicon glyphicon-remove delete'>" +"</span>" + '</section>';
       });
       $(".append-section-to-do").append(displayTask);
     }
@@ -82,6 +82,19 @@ $( function() {
     connectWith: ".connectedSortable"
   }).disableSelection();
 } );
+
+function deleteTask() {
+  $(".delete").click(function(){
+    var id = $('#some_id').data('post_id');
+    var $delete_list = $(this).parent();
+    $.ajax({
+      url: "/posts/" + id + "/tasks/" + $(this).parent().attr("id")+ ".json",
+      type: 'DELETE'
+    })
+    $delete_list.remove();
+  });
+}
+
 
 $(document).on('turbolinks:load', function(){
   bindPostTask();

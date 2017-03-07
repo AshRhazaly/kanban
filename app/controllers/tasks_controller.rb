@@ -19,7 +19,7 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to @post, notice: 'Task was successfully created.' }
         format.js   {}
-        format.json { render json: @task, status: :created, location: @task }
+        format.json { render json: @task, status: :created, location: @post }
       else
         format.html { render action: "new" }
         format.json { render json: @task.errors, status: :unprocessable_entity }

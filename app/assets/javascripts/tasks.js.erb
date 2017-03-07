@@ -1,68 +1,74 @@
 
 function populateTask () {
+  $(".append-section").html("");
   var id = $('#some_id').data('post_id');
+  var displayTask = "";
   $.ajax({
     url: '/posts/' + id + "/tasks.json",
     success: function(data) {
+      $(".to-do").find("section").html()
       $.each(data, function(key, value){
-        var displayTask = "";
-        displayTask += '<section ' +"id=" + value + '>' + value.content + '</section>';
-        $(".to-do").append(displayTask);
+        displayTask += '<section class=task >' + value.content + '</section>';
       });
+      $(".append-section").append(displayTask);
     }
   });
 }
 
-function postTask () {
+function bindPostTask () {
   $(".to-do-input").keyup(function(e){
+    // on enter post input value to database
     if(e.which == 13) {
       var id = $('#some_id').data('post_id');
       myData = {
       content: $(".to-do-input").val()
      }
-     $.post(
-        "/posts/" + id + "/tasks",
-        {task: myData}
-     )
-     .done(function (){
-       populateTask();
-     })
+     console.log("Invoking Populate Tasks")
+     $.ajax({
+       type: "POST",
+       url: "/posts/" + id + "/tasks.json",
+       data: {task: myData}
+     }).done(function(response){
+       populateTask()
+      // You append the response into the html
+    })
+     // clears input field after enter
      $(".to-do-input").val('');
     }
   });
 
-  $(".doing-input").keypress(function(e){
-    if(e.which == 13) {
-      var id = $('#some_id').data('post_id');
-      myData = {
-      content: $(".to-do-input").val()
-     }
-     $.post(
-        "/posts/" + id + "/tasks",
-        {task: myData}
-     )
-     $(".to-do-input").val('');
-    }
-  });
-
-  $(".done-input").keypress(function(e){
-    if(e.which == 13) {
-      var id = $('#some_id').data('post_id');
-      myData = {
-      content: $(".to-do-input").val()
-     }
-     $.post(
-        "/posts/" + id + "/tasks",
-        {task: myData}
-     )
-     $(".to-do-input").val('');
-    }
-  });
+  // $(".doing-input").keypress(function(e){
+  //   if(e.which == 13) {
+  //     var id = $('#some_id').data('post_id');
+  //     myData = {
+  //     content: $(".to-do-input").val()
+  //    }
+  //    $.post(
+  //       "/posts/" + id + "/tasks",
+  //       {task: myData}
+  //    )
+  //    $(".to-do-input").val('');
+  //   }
+  // });
+  //
+  // $(".done-input").keypress(function(e){
+  //   if(e.which == 13) {
+  //     var id = $('#some_id').data('post_id');
+  //     myData = {
+  //     content: $(".to-do-input").val()
+  //    }
+  //    $.post(
+  //       "/posts/" + id + "/tasks",
+  //       {task: myData}
+  //    )
+  //    $(".to-do-input").val('');
+  //   }
+  // });
 
 }
 
 
 $(document).ready(function(){
-  postTask();
+  bindPostTask();
   populateTask();
 });

@@ -9,16 +9,17 @@ function populateTask () {
       $(".to-do").find("section").html()
       $.each(data, function(key, value){
         displayTask += '<section ' + "id=" + value.id + '" class="ui-state-default" >' + value.content +
-        "<span class='glyphicon glyphicon-remove delete'>" +"</span>" +
-        '<span class="glyphicon glyphicon-pencil edit-task">' + '</span>' + '</section>';
+        "<span class='glyphicon glyphicon-remove delete'>" +"</span>" + '</section>';
       });
       $(".append-section-to-do").append(displayTask);
+      bindDeleteTask();
     }
   });
 }
 
-function deleteTask() {
+function bindDeleteTask() {
   $(".delete").click(function(){
+    console.log("im clicked");
     var id = $('#some_id').data('post_id');
     var $delete_list = $(this).parent();
     $.ajax({
@@ -29,9 +30,9 @@ function deleteTask() {
   });
 }
 
-function updateTask() {
-
-}
+// function updateTask() {
+//
+// }
 
 function bindPostTask () {
   $(".to-do-input").keyup(function(e){
@@ -47,7 +48,10 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-to-do").append(`<section class="ui-state-default">${message} </section>`)
+       $(".append-section-to-do").append(`<section class="ui-state-default">${message}
+       <span class="glyphicon glyphicon-remove delete"></span>
+      </section>`)
+      bindDeleteTask();
     })
      // clears input field after enter
      $(".to-do-input").val('');
@@ -67,7 +71,10 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-doing").append(`<section class="ui-state-default">${message} </section>`)
+       $(".append-section-doing").append(`<section class="ui-state-default">${message}
+       <span class="glyphicon glyphicon-remove delete"></span>
+      </section>`)
+      bindDeleteTask();
     })
      // clears input field after enter
      $(".doing-input").val('');
@@ -87,7 +94,10 @@ function bindPostTask () {
        url: "/posts/" + id + "/tasks.json",
        data: {task: myData}
      }).done(function(response){
-       $(".append-section-done").append(`<section class="ui-state-default">${message} </section>`)
+       $(".append-section-done").append(`<section class="ui-state-default">${message}
+       <span class="glyphicon glyphicon-remove delete"></span>
+      </section>`)
+      bindDeleteTask();
     })
      // clears input field after enter
      $(".done-input").val('');
@@ -95,11 +105,7 @@ function bindPostTask () {
   });
 }
 
-$( function() {
-  $( "#sortable1, #sortable2, #sortable3" ).sortable({
-    connectWith: ".connectedSortable"
-  }).disableSelection();
-} );
+
 
 
 
@@ -107,5 +113,10 @@ $( function() {
 $(document).on('turbolinks:load', function(){
   bindPostTask();
   populateTask();
-  deleteTask();
+  bindDeleteTask();
+  $( function() {
+    $( "#sortable1, #sortable2, #sortable3" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  } );
 });

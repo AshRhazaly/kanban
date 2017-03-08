@@ -16279,3 +16279,789 @@ Processing by TasksController#destroy as JSON
 Completed 204 No Content in 11ms (ActiveRecord: 4.0ms)
 
 
+Started GET "/posts" for ::1 at 2017-03-08 09:52:33 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 351ms (Views: 347.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-08 09:52:33 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:61:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.9ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.9ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (109.1ms)
+Started GET "/posts/6" for ::1 at 2017-03-08 09:52:34 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 314ms (Views: 309.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 09:52:34 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 09:52:54 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"High intensity interval training"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 01:52:54 UTC], ["updated_at", 2017-03-08 01:52:54 UTC], ["content", "High intensity interval training"], ["post_id", 6]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 8ms (Views: 0.7ms | ActiveRecord: 2.7ms)
+
+
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:53:07 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.6ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.3ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (95.6ms)
+Started GET "/posts" for ::1 at 2017-03-08 09:53:08 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 318ms (Views: 314.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-08 09:53:08 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:61:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.9ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (101.6ms)
+Started GET "/posts/7" for ::1 at 2017-03-08 09:53:10 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 293ms (Views: 290.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/7/tasks.json" for ::1 at 2017-03-08 09:53:10 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 7]]
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts" for ::1 at 2017-03-08 09:53:12 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 355ms (Views: 352.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-08 09:53:12 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:61:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.0ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.4ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (97.9ms)
+Started GET "/posts/8" for ::1 at 2017-03-08 09:53:12 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 339ms (Views: 336.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/8/tasks.json" for ::1 at 2017-03-08 09:53:13 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"8"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 8]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/posts/8/tasks/229%22.json" for ::1 at 2017-03-08 09:53:14 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"8", "id"=>"229\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 229], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 229]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 8ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/posts" for ::1 at 2017-03-08 09:53:15 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 315ms (Views: 311.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-08 09:53:15 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:61:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.1ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (2.6ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (97.8ms)
+Started GET "/posts/6" for ::1 at 2017-03-08 09:53:19 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 316ms (Views: 312.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 09:53:19 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/posts/6/tasks/236%22.json" for ::1 at 2017-03-08 09:53:20 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"236\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 236], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 236]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 11ms (ActiveRecord: 3.6ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 09:54:31 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Hello"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 01:54:31 UTC], ["updated_at", 2017-03-08 01:54:31 UTC], ["content", "Hello"], ["post_id", 6]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 09:54:34 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"I know"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 01:54:34 UTC], ["updated_at", 2017-03-08 01:54:34 UTC], ["content", "I know"], ["post_id", 6]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 8ms (Views: 0.6ms | ActiveRecord: 3.9ms)
+
+
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:54:38 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.0ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.9ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (89.5ms)
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:54:39 +0800
+Processing by TasksController#destroy as JSON
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:54:39 +0800
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+Processing by TasksController#destroy as JSON
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 0.4ms)
+
+
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+  
+Completed 404 Not Found in 6ms (ActiveRecord: 0.3ms)
+
+
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+app/controllers/tasks_controller.rb:50:in `destroy'
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.2ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.9ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.9ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (176.6ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.2ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (120.2ms)
+Started GET "/posts" for ::1 at 2017-03-08 09:54:39 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 336ms (Views: 333.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-08 09:54:40 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:61:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.0ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.3ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (92.1ms)
+Started GET "/posts/6" for ::1 at 2017-03-08 09:54:43 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 296ms (Views: 290.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 09:54:44 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/posts/6/tasks/237%22.json" for ::1 at 2017-03-08 09:54:45 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"237\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 237], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 237]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 8ms (ActiveRecord: 3.3ms)
+
+
+Started DELETE "/posts/6/tasks/238%22.json" for ::1 at 2017-03-08 09:54:46 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"238\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 238], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 238]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.4ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 09:54:54 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"What do you "}, "post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 01:54:54 UTC], ["updated_at", 2017-03-08 01:54:54 UTC], ["content", "What do you "], ["post_id", 6]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 09:54:57 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Want"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 01:54:57 UTC], ["updated_at", 2017-03-08 01:54:57 UTC], ["content", "Want"], ["post_id", 6]]
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 3.8ms)
+
+
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:55:01 +0800
+Processing by TasksController#destroy as JSON
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:55:01 +0800
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+Processing by TasksController#destroy as JSON
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms)
+
+
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+  
+Completed 404 Not Found in 6ms (ActiveRecord: 0.3ms)
+
+
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+app/controllers/tasks_controller.rb:50:in `destroy'
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.9ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (173.7ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.5ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (143.1ms)
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:56:23 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.9ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.9ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (85.6ms)
+Started GET "/posts/6" for ::1 at 2017-03-08 09:57:44 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 469ms (Views: 465.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 09:57:45 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/posts/6/tasks/239%22.json" for ::1 at 2017-03-08 09:57:49 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"239\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 239], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 239]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.3ms)
+
+
+Started DELETE "/posts/6/tasks/240%22.json" for ::1 at 2017-03-08 09:57:49 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"240\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 240], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 240]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 10ms (ActiveRecord: 3.6ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 09:57:51 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Hello"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 01:57:51 UTC], ["updated_at", 2017-03-08 01:57:51 UTC], ["content", "Hello"], ["post_id", 6]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 3.6ms)
+
+
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 09:57:53 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (1.0ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.3ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.9ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (85.6ms)
+Started GET "/posts/6" for ::1 at 2017-03-08 10:00:39 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 326ms (Views: 323.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 10:00:40 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/posts/6/tasks/241%22.json" for ::1 at 2017-03-08 10:00:41 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"241\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 241], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 241]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.9ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 10:02:07 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Testing"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 02:02:07 UTC], ["updated_at", 2017-03-08 02:02:07 UTC], ["content", "Testing"], ["post_id", 6]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 4.0ms)
+
+
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 10:02:08 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (1.5ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.5ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.0ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (95.8ms)
+Started GET "/posts/6" for ::1 at 2017-03-08 10:02:35 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 456ms (Views: 452.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 10:02:36 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/posts/6/tasks/242%22.json" for ::1 at 2017-03-08 10:02:38 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"242\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 242], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 242]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.3ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 10:02:40 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Testing"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 02:02:40 UTC], ["updated_at", 2017-03-08 02:02:40 UTC], ["content", "Testing"], ["post_id", 6]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-08 10:03:02 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 472ms (Views: 468.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 10:03:03 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/posts/6/tasks/243%22.json" for ::1 at 2017-03-08 10:03:04 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"243\""}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 243], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 243]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.3ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 10:03:07 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Testing"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 02:03:07 UTC], ["updated_at", 2017-03-08 02:03:07 UTC], ["content", "Testing"], ["post_id", 6]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 9ms (Views: 0.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/6" for ::1 at 2017-03-08 10:04:01 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 282ms (Views: 278.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6/tasks.json" for ::1 at 2017-03-08 10:04:02 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 6]]
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/posts/6/tasks/244%22.json" for ::1 at 2017-03-08 10:04:03 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"244\""}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 244], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 244]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 10ms (ActiveRecord: 4.3ms)
+
+
+Started POST "/posts/6/tasks.json" for ::1 at 2017-03-08 10:04:08 +0800
+Processing by TasksController#create as JSON
+  Parameters: {"task"=>{"content"=>"Hello"}, "post_id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("created_at", "updated_at", "content", "post_id") VALUES (?, ?, ?, ?)[0m  [["created_at", 2017-03-08 02:04:08 UTC], ["updated_at", 2017-03-08 02:04:08 UTC], ["content", "Hello"], ["post_id", 6]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 12ms (Views: 1.1ms | ActiveRecord: 2.2ms)
+
+
+Started DELETE "/posts/6/tasks/undefined.json" for ::1 at 2017-03-08 10:04:10 +0800
+Processing by TasksController#destroy as JSON
+  Parameters: {"post_id"=>"6", "id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ? AND "tasks"."id" = ? LIMIT ?[0m  [["post_id", 6], ["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=undefined [WHERE "tasks"."post_id" = ?]):
+  
+app/controllers/tasks_controller.rb:50:in `destroy'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (1.2ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.0ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.0ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (97.7ms)
+Started GET "/posts" for ::1 at 2017-03-08 10:05:01 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 310ms (Views: 307.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-08 10:05:01 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:61:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.2ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.5ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (97.8ms)
+Started GET "/posts/7" for ::1 at 2017-03-08 10:05:03 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 325ms (Views: 320.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/7/tasks.json" for ::1 at 2017-03-08 10:05:03 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"7"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."post_id" = ?[0m  [["post_id", 7]]
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for ::1 at 2017-03-08 10:05:05 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 355ms (Views: 352.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/undefined/tasks.json" for ::1 at 2017-03-08 10:05:05 +0800
+Processing by TasksController#index as JSON
+  Parameters: {"post_id"=>"undefined"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=undefined):
+  
+app/controllers/tasks_controller.rb:61:in `set_tasks'
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (1.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.8ms)
+  Rendering /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.0ms)
+  Rendered /Users/user1/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (102.9ms)

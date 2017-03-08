@@ -19,11 +19,11 @@ function populateTask () {
 
 function bindDeleteTask() {
   $(".delete").click(function(){
-    console.log("im clicked");
     var id = $('#some_id').data('post_id');
+    var task_id = $(this).parent().attr("id");
     var $delete_list = $(this).parent();
     $.ajax({
-      url: "/posts/" + id + "/tasks/" + $(this).parent().attr("id")+ ".json",
+      url: "/posts/" + id + "/tasks/" + task_id + ".json",
       type: 'DELETE'
     })
     $delete_list.remove();

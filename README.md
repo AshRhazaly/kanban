@@ -1,24 +1,13 @@
-# README
+### Kanban Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Built using
 
-Things you may want to cover:
+* Ruby on Rails 5.0.1
 
-* Ruby version
+* Javascript and jquery
 
-* System dependencies
+## Test driven development for the basic CRUD functions, model and integration flow
 
-* Configuration
+# The user will be able to create a kanban Board
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* In the board the user will be able to drag and drop their cards onto different tables
